@@ -3,7 +3,8 @@
         <form method="POST" action="{{ route('chirps.store') }}">
             @csrf
             <textarea name="message" placeholder="{{ __('What\'s on your mind?') }}"
-                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">{{ old('message') }}</textarea>
+                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                autofocus>{{ old('message') }}</textarea>
             <x-input-error :messages="$errors->get('message')" class="mt-2" />
             <x-primary-button class="mt-4">{{ __('Chirp') }}</x-primary-button>
         </form>
@@ -30,6 +31,10 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+
+        <div class="mt-6">
+            {{ $chirps->links() }}
         </div>
     </section>
 </x-app-layout>
